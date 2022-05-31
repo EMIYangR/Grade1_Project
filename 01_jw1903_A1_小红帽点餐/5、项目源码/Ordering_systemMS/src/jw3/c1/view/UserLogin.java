@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URL;
 
 
 /**
@@ -22,7 +23,7 @@ public class UserLogin extends JFrame {
     public UserLogin() {
         initComponents();
         setVisible(true);
-        setSize(320,300);
+        setSize(474,355);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
@@ -38,9 +39,9 @@ public class UserLogin extends JFrame {
                 break;
             case 2:
                 JOptionPane.showMessageDialog(null,"登录成功");
-                setVisible(false);
                 Index.zh=user;
                 Index u1=new Index();
+                dispose();
                 break;
             case 3:
                 JOptionPane.showMessageDialog(null,"账号或密码不能为空");
@@ -50,12 +51,12 @@ public class UserLogin extends JFrame {
 
     private void button2MouseClicked(MouseEvent e) {
         Register z=new Register();
-        setVisible(false);
+        dispose();
     }
 
     private void button3MouseClicked(MouseEvent e) {
         ForgetPwd forgetPwd =new ForgetPwd();
-        setVisible(false);
+        dispose();
     }
 
     private void thisWindowClosed(WindowEvent e) {
@@ -67,8 +68,8 @@ public class UserLogin extends JFrame {
     }
 
     private void button4MouseClicked(MouseEvent e) {
-        setVisible(false);
         LoginChoise loginChoise=new LoginChoise();
+        dispose();
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -83,6 +84,7 @@ public class UserLogin extends JFrame {
 
         //======== this ========
         setTitle("\u7528\u6237\u767b\u5f55");
+        setIconImage(new ImageIcon("C:\\Users\\admin\\Desktop\\\u65b0\u5efa\u6587\u4ef6\u5939 (5)\\01_jw1903_A1_\u5c0f\u7ea2\u5e3d\u70b9\u9910\\5\u3001\u9879\u76ee\u6e90\u7801\\Ordering_systemMS\\images\\logo\\logo.png").getImage());
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
@@ -98,15 +100,18 @@ public class UserLogin extends JFrame {
 
         //---- label1 ----
         label1.setText("\u8d26\u53f7\uff1a");
+        label1.setBackground(Color.white);
+        label1.setForeground(Color.white);
         contentPane.add(label1);
-        label1.setBounds(50, 20, 80, 35);
+        label1.setBounds(125, 45, 80, 35);
         contentPane.add(textField1);
-        textField1.setBounds(130, 20, 150, 35);
+        textField1.setBounds(205, 45, 185, 35);
 
         //---- label2 ----
         label2.setText("\u5bc6\u7801\uff1a");
+        label2.setForeground(Color.white);
         contentPane.add(label2);
-        label2.setBounds(50, 75, 80, 35);
+        label2.setBounds(125, 110, 80, 35);
 
         //---- button1 ----
         button1.setText("\u767b\u5f55");
@@ -117,7 +122,7 @@ public class UserLogin extends JFrame {
             }
         });
         contentPane.add(button1);
-        button1.setBounds(50, 130, 95, 30);
+        button1.setBounds(125, 180, 110, 45);
 
         //---- button4 ----
         button4.setText("\u53d6\u6d88");
@@ -128,7 +133,7 @@ public class UserLogin extends JFrame {
             }
         });
         contentPane.add(button4);
-        button4.setBounds(185, 170, 95, 30);
+        button4.setBounds(280, 235, 110, 45);
 
         //---- button2 ----
         button2.setText("\u6ce8\u518c");
@@ -139,7 +144,7 @@ public class UserLogin extends JFrame {
             }
         });
         contentPane.add(button2);
-        button2.setBounds(185, 130, 95, 30);
+        button2.setBounds(280, 180, 110, 45);
 
         //---- button3 ----
         button3.setText("\u5fd8\u8bb0\u5bc6\u7801");
@@ -150,9 +155,9 @@ public class UserLogin extends JFrame {
             }
         });
         contentPane.add(button3);
-        button3.setBounds(50, 170, 95, 30);
+        button3.setBounds(125, 235, 110, 45);
         contentPane.add(passwordField1);
-        passwordField1.setBounds(130, 75, 150, 35);
+        passwordField1.setBounds(205, 110, 185, 35);
 
         {
             // compute preferred size
@@ -171,6 +176,12 @@ public class UserLogin extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+        ImageIcon icon = new ImageIcon("images/background/bj.png"); // 创建背景图片对象
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+        this.getContentPane().add(lblBackground); // 将组件添加到面板中
+
 
     }
 

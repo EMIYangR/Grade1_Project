@@ -24,7 +24,7 @@ public class Register extends JFrame {
     public Register() {
         initComponents();
         setVisible(true);
-        setSize(600,480);
+        setSize(679,479);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
@@ -132,7 +132,6 @@ public class Register extends JFrame {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
         textField1 = new JTextField();
-        label2 = new JLabel();
         textField2 = new JTextField();
         label3 = new JLabel();
         label4 = new JLabel();
@@ -147,9 +146,11 @@ public class Register extends JFrame {
         label8 = new JLabel();
         label9 = new JLabel();
         label10 = new JLabel();
+        label11 = new JLabel();
 
         //======== this ========
         setTitle("\u6ce8\u518c\u8d26\u53f7");
+        setIconImage(new ImageIcon("C:\\Users\\admin\\Desktop\\\u65b0\u5efa\u6587\u4ef6\u5939 (5)\\01_jw1903_A1_\u5c0f\u7ea2\u5e3d\u70b9\u9910\\5\u3001\u9879\u76ee\u6e90\u7801\\Ordering_systemMS\\images\\logo\\logo.png").getImage());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -157,7 +158,7 @@ public class Register extends JFrame {
         label1.setText("\u6635\u79f0\uff1a");
         label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         contentPane.add(label1);
-        label1.setBounds(120, 40, 50, 30);
+        label1.setBounds(125, 70, 50, 30);
 
         //---- textField1 ----
         textField1.addFocusListener(new FocusAdapter() {
@@ -178,13 +179,7 @@ public class Register extends JFrame {
             }
         });
         contentPane.add(textField1);
-        textField1.setBounds(185, 40, 160, textField1.getPreferredSize().height);
-
-        //---- label2 ----
-        label2.setText("\u624b\u673a\u53f7\uff1a");
-        label2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
-        contentPane.add(label2);
-        label2.setBounds(105, 80, 65, 30);
+        textField1.setBounds(185, 68, 230, 35);
 
         //---- textField2 ----
         textField2.addFocusListener(new FocusAdapter() {
@@ -204,19 +199,19 @@ public class Register extends JFrame {
             }
         });
         contentPane.add(textField2);
-        textField2.setBounds(185, 80, 160, 30);
+        textField2.setBounds(185, 125, 230, 35);
 
         //---- label3 ----
         label3.setText("Email\uff1a");
         label3.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         contentPane.add(label3);
-        label3.setBounds(110, 120, 60, 30);
+        label3.setBounds(115, 180, 60, 30);
 
         //---- label4 ----
         label4.setText("\u786e\u8ba4\u5bc6\u7801\uff1a");
         label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         contentPane.add(label4);
-        label4.setBounds(90, 200, 80, 30);
+        label4.setBounds(95, 290, 80, 30);
 
         //---- passwordField2 ----
         passwordField2.addFocusListener(new FocusAdapter() {
@@ -240,7 +235,7 @@ public class Register extends JFrame {
             }
         });
         contentPane.add(passwordField2);
-        passwordField2.setBounds(185, 160, 160, 30);
+        passwordField2.setBounds(185, 233, 230, 35);
 
         //---- button1 ----
         button1.setText("\u786e\u5b9a\u6ce8\u518c");
@@ -251,7 +246,7 @@ public class Register extends JFrame {
             }
         });
         contentPane.add(button1);
-        button1.setBounds(new Rectangle(new Point(145, 280), button1.getPreferredSize()));
+        button1.setBounds(120, 360, 100, 50);
 
         //---- button2 ----
         button2.setText("\u53d6\u6d88\u6ce8\u518c");
@@ -262,13 +257,13 @@ public class Register extends JFrame {
             }
         });
         contentPane.add(button2);
-        button2.setBounds(new Rectangle(new Point(275, 280), button2.getPreferredSize()));
+        button2.setBounds(310, 360, 100, 50);
 
         //---- label5 ----
         label5.setText("\u5bc6\u7801\uff1a");
         label5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         contentPane.add(label5);
-        label5.setBounds(120, 160, 50, 30);
+        label5.setBounds(125, 235, 50, 30);
 
         //---- passwordField3 ----
         passwordField3.addFocusListener(new FocusAdapter() {
@@ -288,13 +283,13 @@ public class Register extends JFrame {
             }
         });
         contentPane.add(passwordField3);
-        passwordField3.setBounds(185, 200, 160, 30);
+        passwordField3.setBounds(185, 288, 230, 35);
 
         //---- label6 ----
         label6.setText("tips");
-        label6.setForeground(Color.red);
+        label6.setForeground(Color.orange);
         contentPane.add(label6);
-        label6.setBounds(345, 80, 160, 30);
+        label6.setBounds(420, 125, 160, 30);
 
         //---- textField3 ----
         textField3.addFocusListener(new FocusAdapter() {
@@ -318,31 +313,37 @@ public class Register extends JFrame {
             }
         });
         contentPane.add(textField3);
-        textField3.setBounds(185, 120, 160, 30);
+        textField3.setBounds(185, 173, 230, 35);
 
         //---- label7 ----
         label7.setText("tips");
-        label7.setForeground(Color.red);
+        label7.setForeground(Color.orange);
         contentPane.add(label7);
-        label7.setBounds(345, 120, 245, 30);
+        label7.setBounds(420, 175, 245, 30);
 
         //---- label8 ----
         label8.setText("tips");
-        label8.setForeground(Color.red);
+        label8.setForeground(Color.orange);
         contentPane.add(label8);
-        label8.setBounds(345, 160, 160, 30);
+        label8.setBounds(420, 235, 160, 30);
 
         //---- label9 ----
         label9.setText("tips");
-        label9.setForeground(Color.red);
+        label9.setForeground(Color.orange);
         contentPane.add(label9);
-        label9.setBounds(345, 200, 160, 30);
+        label9.setBounds(420, 290, 160, 30);
 
         //---- label10 ----
         label10.setText("tips");
-        label10.setForeground(Color.red);
+        label10.setForeground(Color.orange);
         contentPane.add(label10);
-        label10.setBounds(345, 40, 160, 30);
+        label10.setBounds(420, 70, 160, 30);
+
+        //---- label11 ----
+        label11.setText("\u624b\u673a\u53f7\uff1a");
+        label11.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
+        contentPane.add(label11);
+        label11.setBounds(115, 125, 65, 30);
 
         {
             // compute preferred size
@@ -361,6 +362,11 @@ public class Register extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+        ImageIcon icon = new ImageIcon("images/background/zcbj1.jpg"); // 创建背景图片对象
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(-25, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+        this.getContentPane().add(lblBackground); // 将组件添加到面板中
         label6.setVisible(false);
         label7.setVisible(false);
         label8.setVisible(false);
@@ -371,7 +377,6 @@ public class Register extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JLabel label1;
     private JTextField textField1;
-    private JLabel label2;
     private JTextField textField2;
     private JLabel label3;
     private JLabel label4;
@@ -386,6 +391,7 @@ public class Register extends JFrame {
     private JLabel label8;
     private JLabel label9;
     private JLabel label10;
+    private JLabel label11;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public void sjhpd(){
         int i;

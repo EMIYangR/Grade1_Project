@@ -6,6 +6,7 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
 			"title": "商家登录"
+			"iconImage": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\admin\\Desktop\\新建文件夹 (5)\\01_jw1903_A1_小红帽点餐\\5、项目源码\\Ordering_systemMS\\images\\logo\\logo.png" )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "账号："

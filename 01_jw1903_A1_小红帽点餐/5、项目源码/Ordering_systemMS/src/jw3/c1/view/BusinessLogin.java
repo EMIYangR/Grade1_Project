@@ -4,7 +4,7 @@
 
 package jw3.c1.view;
 
-import jw3.c1.controller.BusdinessController;
+import jw3.c1.controller.BusinessController;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -24,7 +24,7 @@ public class BusinessLogin extends JFrame {
     private void button1MouseClicked(MouseEvent e) {
         String  user=textField1.getText();
         String  pwd=passwordField1.getText();
-        int a=BusdinessController.dlupd(user,pwd);
+        int a= BusinessController.dlupd(user,pwd);
         switch (a){
             case 1:
                 JOptionPane.showMessageDialog(null,"账号或密码错误");
@@ -32,7 +32,8 @@ public class BusinessLogin extends JFrame {
                 break;
             case 2:
                 JOptionPane.showMessageDialog(null,"登录成功");
-                System.exit(0);
+                Server_Index s=new Server_Index();
+                dispose();
                 break;
             case 3:
                 JOptionPane.showMessageDialog(null,"账号或密码不能为空");
@@ -41,8 +42,8 @@ public class BusinessLogin extends JFrame {
     }
 
     private void button2MouseClicked(MouseEvent e) {
-        setVisible(false);
         LoginChoise a=new LoginChoise();
+        dispose();
     }
 
     private void initComponents() {
@@ -56,6 +57,7 @@ public class BusinessLogin extends JFrame {
 
         //======== this ========
         setTitle("\u5546\u5bb6\u767b\u5f55");
+        setIconImage(new ImageIcon("C:\\Users\\admin\\Desktop\\\u65b0\u5efa\u6587\u4ef6\u5939 (5)\\01_jw1903_A1_\u5c0f\u7ea2\u5e3d\u70b9\u9910\\5\u3001\u9879\u76ee\u6e90\u7801\\Ordering_systemMS\\images\\logo\\logo.png").getImage());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 

@@ -6,6 +6,7 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
 			"title": "登陆系统选择"
+			"iconImage": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\admin\\Desktop\\新建文件夹 (5)\\01_jw1903_A1_小红帽点餐\\5、项目源码\\Ordering_systemMS\\images\\logo\\logo.png" )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
 				"text": "用户登录"

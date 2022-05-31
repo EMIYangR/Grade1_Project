@@ -1,6 +1,12 @@
 package jw3.c1.model;
 
+import java.math.BigDecimal;
+
 public class Goods {
+
+
+    private int g_id;
+    private String g_name;
 
     public int getG_id() {
         return g_id;
@@ -18,11 +24,11 @@ public class Goods {
         this.g_name = g_name;
     }
 
-    public double getG_price() {
+    public BigDecimal getG_price() {
         return g_price;
     }
 
-    public void setG_price(double g_price) {
+    public void setG_price(BigDecimal g_price) {
         this.g_price = g_price;
     }
 
@@ -34,11 +40,11 @@ public class Goods {
         this.g_time = g_time;
     }
 
-    public double getG_dprice() {
+    public BigDecimal getG_dprice() {
         return g_dprice;
     }
 
-    public void setG_dprice(double g_dprice) {
+    public void setG_dprice(BigDecimal g_dprice) {
         this.g_dprice = g_dprice;
     }
 
@@ -66,11 +72,12 @@ public class Goods {
         this.m_id = m_id;
     }
 
-    private int g_id;
-    private String g_name;
-    private double g_price;
+    private BigDecimal g_price;
     private String g_time;
-    private double g_dprice;
+
+
+
+    private BigDecimal g_dprice;
     private String g_url;
     private String g_coupon;
     private int m_id;

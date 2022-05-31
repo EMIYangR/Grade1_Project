@@ -1,10 +1,7 @@
 package jw3.c1.utils;
 
 import java.lang.reflect.Field;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,4 +40,20 @@ public class QueryByClass<T> {
         }
         return null;
     }
+    public int selectcount(String sql){
+        //获取总行数
+        try {
+            Connection conn=DBConnection.getConnection();
+            Statement stat = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stat.executeQuery(sql);
+            rs.last();
+            int rowCount = rs.getRow(); //获得ResultSet的总行数
+            DBConnection.close(rs,stat,conn);
+            return rowCount;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }

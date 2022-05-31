@@ -22,12 +22,12 @@ public class LoginChoise extends JFrame {
 
     private void button1MouseClicked(MouseEvent e) {
         UserLogin u=new UserLogin();
-        setVisible(false);
+        dispose();
     }
 
     private void button2MouseClicked(MouseEvent e) {
-        setVisible(false);
         BusinessLogin sjl=new BusinessLogin();
+        dispose();
     }
 
     private void initComponents() {
@@ -37,6 +37,7 @@ public class LoginChoise extends JFrame {
 
         //======== this ========
         setTitle("\u767b\u9646\u7cfb\u7edf\u9009\u62e9");
+        setIconImage(new ImageIcon("C:\\Users\\admin\\Desktop\\\u65b0\u5efa\u6587\u4ef6\u5939 (5)\\01_jw1903_A1_\u5c0f\u7ea2\u5e3d\u70b9\u9910\\5\u3001\u9879\u76ee\u6e90\u7801\\Ordering_systemMS\\images\\logo\\logo.png").getImage());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 

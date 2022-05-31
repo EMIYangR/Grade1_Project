@@ -39,8 +39,8 @@ public class ForgetPwd extends JFrame {
                         case 1:
                             UserinfoController.mmxg(c,a,b);
                             JOptionPane.showMessageDialog(null,"修改成功");
-                            setVisible(false);
                             UserLogin l=new UserLogin();
+                            dispose();
                             break;
                         case 2:
                             JOptionPane.showMessageDialog(null,"密码不能与之前相同");
@@ -115,8 +115,8 @@ public class ForgetPwd extends JFrame {
             }
         }
         private void button2MouseClicked(MouseEvent e) {
-            setVisible(false);
             UserLogin l=new UserLogin();
+            dispose();
         }
         private void passwordField2KeyReleased(KeyEvent e) {
             String pwd=passwordField2.getText();
@@ -224,6 +224,18 @@ public class ForgetPwd extends JFrame {
         }
     }
 
+    private void passwordField1KeyPressed(KeyEvent e) {
+        // TODO add your code here
+    }
+
+    private void passwordField1FocusLost(FocusEvent e) {
+        // TODO add your code here
+    }
+
+    private void passwordField2KeyPressed(KeyEvent e) {
+        // TODO add your code here
+    }
+
     private void initComponents(){
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
@@ -242,6 +254,7 @@ public class ForgetPwd extends JFrame {
 
         //======== this ========
         setTitle("\u5fd8\u8bb0\u5bc6\u7801");
+        setIconImage(new ImageIcon("C:\\Users\\admin\\Desktop\\\u65b0\u5efa\u6587\u4ef6\u5939 (5)\\01_jw1903_A1_\u5c0f\u7ea2\u5e3d\u70b9\u9910\\5\u3001\u9879\u76ee\u6e90\u7801\\Ordering_systemMS\\images\\logo\\logo.png").getImage());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -324,7 +337,7 @@ public class ForgetPwd extends JFrame {
         passwordField1.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-
+                passwordField1KeyPressed(e);
             }
             @Override
             public void keyReleased(KeyEvent e) {
@@ -338,6 +351,7 @@ public class ForgetPwd extends JFrame {
             }
             @Override
             public void focusLost(FocusEvent e) {
+                passwordField1FocusLost(e);
             }
         });
         contentPane.add(passwordField1);
@@ -347,6 +361,7 @@ public class ForgetPwd extends JFrame {
         passwordField2.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                passwordField2KeyPressed(e);
             }
             @Override
             public void keyReleased(KeyEvent e) {

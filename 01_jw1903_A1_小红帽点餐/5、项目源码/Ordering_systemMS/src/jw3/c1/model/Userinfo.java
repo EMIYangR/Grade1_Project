@@ -48,12 +48,12 @@ public class Userinfo {
         this.u_account = u_account;
     }
 
-//    public LocalDate getU_headimage() {
-//        return u_headimage;
-//    }
+    public String getU_headimage() {
+        return u_headimage;
+    }
 
     public void setU_headimage(String u_headimage) {
-        this.u_headimage = LocalDate.parse(u_headimage);
+        this.u_headimage = u_headimage;
     }
 
     public String getU_pwd() {
@@ -106,15 +106,8 @@ public class Userinfo {
     private String u_phone;
     private String u_account;
 
-    public LocalDate getU_headimage() {
-        return u_headimage;
-    }
 
-    public void setU_headimage(LocalDate u_headimage) {
-        this.u_headimage = u_headimage;
-    }
-
-    private LocalDate u_headimage;
+    private String u_headimage;
     private String u_pwd;
     private int v_viprank;
     private Date u_registertime;
