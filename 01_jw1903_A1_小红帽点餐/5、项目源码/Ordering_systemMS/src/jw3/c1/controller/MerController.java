@@ -94,9 +94,100 @@ public class MerController {
         String sql="INSERT into mer VALUES(0,?,?,?,?,?,?,?,?,?)";
         DBConnection.zsg(sql,a,b,c,d,e,f,g,r.nextInt(e1.size()),r.nextInt(u1.size()));
     }
+//    public static double sel1(){
+//        String sql="SELECT a.m_name,(sum(b.g_price)/COUNT(b.g_name)) as pj from mer a join goods b on a.m_id=b.m_id GROUP BY a.m_name;";
+//        List<Mer> merList=qc.select(Mer.class,sql);
+//        int[] jg=new int[merList.size()];
+//        for (int i = 0; i < merList.size(); i++) {
+//            jg[i]=merList.g
+//        }
+//        return merList;
+//    }
+    public static int[] sel2(){
+        int i=0;
+        try {
+            String sql="SELECT a.m_name,(sum(b.g_price)/COUNT(b.g_name)) as pj from mer a join goods b on a.m_id=b.m_id GROUP BY a.m_name";
+            Connection conn= DBConnection.getConnection();
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            int[] s=new int[20];
+            int a=0;
+            while (rs.next())
+            {
+                s[i++]=rs.getInt("pj");
+            }
+            DBConnection.close(rs,ps,conn);
+            return s;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static int sel3(int a){
+        int i=0;
+        try {
+            String sql="SELECT a.mt_id,a.m_name,(sum(b.g_price)/COUNT(b.g_name)) as pj from mer a join goods b on a.m_id=b.m_id where a.mt_id=? GROUP BY a.m_name";
+            Connection conn= DBConnection.getConnection();
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setInt(1,a);
+            ResultSet rs = ps.executeQuery();
+            int s=0;
+            while (rs.next())
+            {
+                s=rs.getInt("mt_id");
+            }
+            DBConnection.close(rs,ps,conn);
+            return s;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public static List<Mer> dpcx1(int id){//根据商品id查询店铺
+        String sql="select  *\n" +
+                "from Mer where mt_id="+id;
+        List<Mer> m= qc.select(Mer.class,sql);
+        return m;
+    }
+    public static int sel5(int aa){
+        int i=0;
+        try {
+            String sql="SELECT a.m_name,(sum(b.g_price)/COUNT(b.g_name)) as pj from mer a join goods b on a.m_id=b.m_id where a.mt_id=? GROUP BY a.m_name";
+            Connection conn= DBConnection.getConnection();
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            int[] s=new int[20];
+            int a=0;
+            while (rs.next())
+            {
+                a=rs.getInt("pj");
+            }
+            DBConnection.close(rs,ps,conn);
+            return a;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public static List<Mer> sel4(String a){
+        //模糊查
+        String b="'%"+a+"%'";
+            String sql="SELECT * from mer where m_name like"+b;
+            List<Mer> l=qc.select(Mer.class,sql);
+
+            return l;
+    }
+
     public static List<Mer> sel1(){
         String sql="select * from mer";
         List<Mer> merList=qc.select(Mer.class,sql);
         return merList;
     }
+    public static Mer cx(int id){//店铺id查询店铺信息
+        String sql="select * from mer where m_id="+id;
+        List<Mer> list= qc.select(Mer.class,sql);
+        Mer m=list.get(0);
+        return m;
+    }
+
 }

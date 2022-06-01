@@ -29,17 +29,20 @@ public class MertypeController {
         return 0;
     }
     public static int cx1(String a){
+        //根据名字查id
         String sql="select mt_id from mertype where mt_name=?";
         List<Mertype> mt=qc.select(Mertype.class,sql,a);
         int mt1=mt.get(0).getMt_id();
         return mt1;
     }
     public static List cx2(){
+        //查所有店铺类型
         String sql="select mt_name from mertype";
         List<Mertype> mt=qc.select(Mertype.class,sql);
         return mt;
     }
     public static boolean cx3(String a){
+        //判断添加的记录有重复没有
         String sql="select mt_name from mertype where mt_name=?";
         List<Mertype> mt=qc.select(Mertype.class,sql,a);
         if (mt.size()>0){
@@ -49,8 +52,15 @@ public class MertypeController {
         }
     }
     public static void dele(int a){
+        //根据id删除
         String sql="delect * from mertype where mt_id=?";
         DBConnection.zsg(sql,a);
+    }
+    public static String cx4(String a){
+        //根据id查名字
+        String sql="select mt_name from mertype where mt_id=?";
+        List<Mertype> mt=qc.select(Mertype.class,sql,a);
+        return mt.get(0).getMt_name();
     }
 
 }

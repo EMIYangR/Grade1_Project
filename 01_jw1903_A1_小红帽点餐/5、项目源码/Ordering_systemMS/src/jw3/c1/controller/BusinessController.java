@@ -3,7 +3,7 @@ package jw3.c1.controller;
 import jw3.c1.model.Business;
 import jw3.c1.utils.DBConnection;
 import jw3.c1.utils.QueryByClass;
-import jw3.c1.view.Index;
+import jw3.c1.view.主界面.Index;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -51,6 +51,11 @@ public class BusinessController {
     public static void xxtj(String a,String b,String c){
         String sql="INSERT into business VALUES(0,?,?,?)";
         DBConnection.zsg(sql,a,b,c);
+    }
+    public static List<Business> cx(String a){
+        String sql="select * from business where b_userid=?";
+        List<Business> busdinessList= qc.select(Business.class,sql,a);
+        return busdinessList;
     }
     //增：注册
     public static boolean register(Business business){

@@ -2,7 +2,7 @@ package jw3.c1.controller;
 import jw3.c1.model.Userinfo;
 import jw3.c1.utils.DBConnection;
 import jw3.c1.utils.QueryByClass;
-import jw3.c1.view.Index;
+import jw3.c1.view.主界面.Index;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

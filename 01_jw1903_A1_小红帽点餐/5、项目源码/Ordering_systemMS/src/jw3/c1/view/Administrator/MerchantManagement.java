@@ -213,6 +213,7 @@ public class MerchantManagement extends JFrame {
         label12 = new JLabel();
 
         //======== this ========
+        setTitle("\u540e\u53f0\u8fd0\u8425\u7cfb\u7edf");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 

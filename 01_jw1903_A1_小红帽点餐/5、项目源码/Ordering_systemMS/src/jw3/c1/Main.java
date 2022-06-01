@@ -1,9 +1,7 @@
 package jw3.c1;
 
-import jw3.c1.view.Index;
-import jw3.c1.view.Inquireface;
-import jw3.c1.view.LoginChoise;
-import jw3.c1.view.Oderfrom;
+import jw3.c1.view.主界面.Index;
+import jw3.c1.view.*;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import javax.swing.*;
 
@@ -18,6 +16,5 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new LoginChoise();
     }
 }

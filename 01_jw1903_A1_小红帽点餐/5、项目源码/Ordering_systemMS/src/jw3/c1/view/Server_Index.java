@@ -6,6 +6,7 @@ package jw3.c1.view;
 import java.awt.event.*;
 import jw3.c1.utils.Imagesinks;
 import jw3.c1.utils.QueryByClass;
+import jw3.c1.view.登录.BusinessLogin;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;

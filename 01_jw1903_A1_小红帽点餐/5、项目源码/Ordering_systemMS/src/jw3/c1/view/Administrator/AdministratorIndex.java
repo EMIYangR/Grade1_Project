@@ -6,18 +6,10 @@ package jw3.c1.view.Administrator;
 
 import java.awt.event.*;
 import jw3.c1.controller.AdministratorController;
-import jw3.c1.controller.UserinfoController;
 import jw3.c1.model.Administrator;
-import jw3.c1.model.Business;
-import jw3.c1.model.Mer;
-import jw3.c1.model.Userinfo;
 import jw3.c1.utils.Imagesinks;
-import jw3.c1.utils.QueryByClass;
-import jw3.c1.view.Index;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 
 /**
@@ -65,6 +57,12 @@ public class AdministratorIndex extends JFrame {
         new CouponManagement();
         this.setVisible(false);
     }
+    //退出登录
+    private void button6MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        this.setVisible(false);
+        new AdministratorIndex();
+    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -79,6 +77,7 @@ public class AdministratorIndex extends JFrame {
         button3 = new JButton();
         button4 = new JButton();
         button5 = new JButton();
+        button6 = new JButton();
 
         //======== this ========
         setTitle("\u540e\u53f0\u8fd0\u8425\u7cfb\u7edf");
@@ -172,6 +171,18 @@ public class AdministratorIndex extends JFrame {
         contentPane.add(button5);
         button5.setBounds(20, 450, 150, 45);
 
+        //---- button6 ----
+        button6.setText("\u9000\u51fa\u767b\u5f55");
+        button6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button6MouseClicked(e);
+            }
+        });
+        contentPane.add(button6);
+        button6.setBounds(20, 525, 150, 45);
+
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -189,7 +200,8 @@ public class AdministratorIndex extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-//        AdministratorController.username(.get(0).getA_name());
+//        administrator=AdministratorController.user(admin_name);
+//        label1.setText(administrator.getA_name());
         label2.setIcon(Imagesinks.png("images/administrator/admin.png",75,75));
         label4.setIcon(Imagesinks.png("images/logo/logo.png",100,100));
     }
@@ -206,7 +218,8 @@ public class AdministratorIndex extends JFrame {
     private JButton button3;
     private JButton button4;
     private JButton button5;
+    private JButton button6;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public static Administrator administrator;
-    public static String a;
+    public static String admin_name;
 }

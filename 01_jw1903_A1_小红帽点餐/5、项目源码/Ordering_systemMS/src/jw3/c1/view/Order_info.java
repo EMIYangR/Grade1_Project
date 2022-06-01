@@ -81,7 +81,7 @@ public class Order_info extends JPanel {
             scrollPane1.setViewportView(table1);
         }
         add(scrollPane1);
-        scrollPane1.setBounds(5, 95, 735, 410);
+        scrollPane1.setBounds(5, 95, 815, 485);
         add(textField1);
         textField1.setBounds(230, 35, 375, 30);
 
@@ -111,17 +111,17 @@ public class Order_info extends JPanel {
             }
         });
         add(button1);
-        button1.setBounds(762, 265, 60, 30);
+        button1.setBounds(820, 265, 60, 30);
 
         //---- button2 ----
         button2.setText("\u4fee\u6539");
         add(button2);
-        button2.setBounds(762, 355, 60, 30);
+        button2.setBounds(820, 355, 60, 30);
 
         //---- button4 ----
         button4.setText("\u6dfb\u52a0");
         add(button4);
-        button4.setBounds(762, 440, 60, 30);
+        button4.setBounds(820, 440, 60, 30);
 
         //---- button5 ----
         button5.setText("\u5237\u65b0");
@@ -132,7 +132,7 @@ public class Order_info extends JPanel {
             }
         });
         add(button5);
-        button5.setBounds(760, 175, 65, button5.getPreferredSize().height);
+        button5.setBounds(820, 175, 65, button5.getPreferredSize().height);
 
         {
             // compute preferred size

@@ -219,9 +219,28 @@ public class UserManagement extends JFrame {
         new CouponManagement();
         this.setVisible(false);
     }
+    //黑名单
+    private void button12MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        this.setVisible(false);
+        dialog3.setModal(true);
+        dialog3.setSize(800,600);
+        dialog3.setVisible(true);
+    }
+    //返回用户管理
+    private void button18MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        dialog3.dispose();
+        new UserManagement();
+    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        button1 = new JButton();
+        button2 = new JButton();
+        button3 = new JButton();
+        button4 = new JButton();
+        button5 = new JButton();
         button9 = new JButton();
         button8 = new JButton();
         button7 = new JButton();
@@ -229,11 +248,7 @@ public class UserManagement extends JFrame {
         separator1 = new JPopupMenu.Separator();
         label5 = new JLabel();
         textField1 = new JTextField();
-        button5 = new JButton();
-        button4 = new JButton();
-        button3 = new JButton();
-        button2 = new JButton();
-        button1 = new JButton();
+        button12 = new JButton();
         label1 = new JLabel();
         label2 = new JLabel();
         label4 = new JLabel();
@@ -291,10 +306,74 @@ public class UserManagement extends JFrame {
         label30 = new JLabel();
         label32 = new JLabel();
         label33 = new JLabel();
+        dialog3 = new JDialog();
+        label34 = new JLabel();
+        textField9 = new JTextField();
+        button13 = new JButton();
+        button16 = new JButton();
+        button17 = new JButton();
+        button18 = new JButton();
+        scrollPane2 = new JScrollPane();
+        table2 = new JTable();
 
         //======== this ========
+        setTitle("\u540e\u53f0\u8fd0\u8425\u7cfb\u7edf");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
+
+        //---- button1 ----
+        button1.setText("\u4e3b\u9875");
+        button1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button1MouseClicked(e);
+            }
+        });
+        contentPane.add(button1);
+        button1.setBounds(20, 150, 150, 45);
+
+        //---- button2 ----
+        button2.setText("\u5546\u5bb6\u7ba1\u7406");
+        button2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button2MouseClicked(e);
+            }
+        });
+        contentPane.add(button2);
+        button2.setBounds(20, 225, 150, 45);
+
+        //---- button3 ----
+        button3.setText("\u7528\u6237\u7ba1\u7406");
+        button3.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button3MouseClicked(e);
+            }
+        });
+        contentPane.add(button3);
+        button3.setBounds(20, 300, 150, 45);
+
+        //---- button4 ----
+        button4.setText("\u4f18\u60e0\u5238\u7ba1\u7406");
+        button4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button4MouseClicked(e);
+            }
+        });
+        contentPane.add(button4);
+        button4.setBounds(20, 375, 150, 45);
+
+        //---- button5 ----
+        button5.setText("\u6536\u76ca");
+        button5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        contentPane.add(button5);
+        button5.setBounds(20, 450, 150, 45);
 
         //---- button9 ----
         button9.setText("\u4fee\u6539");
@@ -352,59 +431,16 @@ public class UserManagement extends JFrame {
         contentPane.add(textField1);
         textField1.setBounds(205, 150, 700, 30);
 
-        //---- button5 ----
-        button5.setText("\u6536\u76ca");
-        button5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
-        contentPane.add(button5);
-        button5.setBounds(20, 450, 150, 45);
-
-        //---- button4 ----
-        button4.setText("\u4f18\u60e0\u5238\u7ba1\u7406");
-        button4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
-        button4.addMouseListener(new MouseAdapter() {
+        //---- button12 ----
+        button12.setText("\u9ed1\u540d\u5355");
+        button12.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                button4MouseClicked(e);
+                button12MouseClicked(e);
             }
         });
-        contentPane.add(button4);
-        button4.setBounds(20, 375, 150, 45);
-
-        //---- button3 ----
-        button3.setText("\u7528\u6237\u7ba1\u7406");
-        button3.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
-        button3.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                button3MouseClicked(e);
-            }
-        });
-        contentPane.add(button3);
-        button3.setBounds(20, 300, 150, 45);
-
-        //---- button2 ----
-        button2.setText("\u5546\u5bb6\u7ba1\u7406");
-        button2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
-        button2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                button2MouseClicked(e);
-            }
-        });
-        contentPane.add(button2);
-        button2.setBounds(20, 225, 150, 45);
-
-        //---- button1 ----
-        button1.setText("\u4e3b\u9875");
-        button1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
-        button1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                button1MouseClicked(e);
-            }
-        });
-        contentPane.add(button1);
-        button1.setBounds(20, 150, 150, 45);
+        contentPane.add(button12);
+        button12.setBounds(930, 550, 75, 30);
 
         //---- label1 ----
         label1.setText("Administrator");
@@ -448,6 +484,7 @@ public class UserManagement extends JFrame {
 
         //======== dialog1 ========
         {
+            dialog1.setTitle("\u6dfb\u52a0\u7528\u6237");
             Container dialog1ContentPane = dialog1.getContentPane();
             dialog1ContentPane.setLayout(null);
 
@@ -576,6 +613,7 @@ public class UserManagement extends JFrame {
 
         //======== dialog2 ========
         {
+            dialog2.setTitle("\u7528\u6237\u4fe1\u606f\u4fee\u6539");
             Container dialog2ContentPane = dialog2.getContentPane();
             dialog2ContentPane.setLayout(null);
 
@@ -714,12 +752,84 @@ public class UserManagement extends JFrame {
             dialog2.pack();
             dialog2.setLocationRelativeTo(dialog2.getOwner());
         }
+
+        //======== dialog3 ========
+        {
+            dialog3.setTitle("\u9ed1\u540d\u5355\u7ba1\u7406");
+            Container dialog3ContentPane = dialog3.getContentPane();
+            dialog3ContentPane.setLayout(null);
+
+            //---- label34 ----
+            label34.setText("\u5c0f\u7ea2\u5e3d\u70b9\u9910\u7cfb\u7edf\u2122\u540e\u53f0\u8fd0\u8425\u7cfb\u7edf");
+            label34.setFont(new Font("\u65b9\u6b63\u5c0f\u6807\u5b8b_GBK", Font.BOLD, 28));
+            label34.setForeground(new Color(204, 0, 0));
+            label34.setEnabled(false);
+            dialog3ContentPane.add(label34);
+            label34.setBounds(170, 25, 414, 35);
+            dialog3ContentPane.add(textField9);
+            textField9.setBounds(25, 80, 600, 30);
+
+            //---- button13 ----
+            button13.setText("\u641c\u7d22");
+            dialog3ContentPane.add(button13);
+            button13.setBounds(650, 80, 75, 30);
+
+            //---- button16 ----
+            button16.setText("\u52a0\u5165\u9ed1\u540d\u5355");
+            dialog3ContentPane.add(button16);
+            button16.setBounds(650, 180, 75, 30);
+
+            //---- button17 ----
+            button17.setText("\u79fb\u9664\u9ed1\u540d\u5355");
+            dialog3ContentPane.add(button17);
+            button17.setBounds(650, 280, 75, 30);
+
+            //---- button18 ----
+            button18.setText("\u8fd4\u56de");
+            button18.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    button18MouseClicked(e);
+                }
+            });
+            dialog3ContentPane.add(button18);
+            button18.setBounds(15, 15, 75, 30);
+
+            //======== scrollPane2 ========
+            {
+                scrollPane2.setViewportView(table2);
+            }
+            dialog3ContentPane.add(scrollPane2);
+            scrollPane2.setBounds(25, 125, 600, 350);
+
+            {
+                // compute preferred size
+                Dimension preferredSize = new Dimension();
+                for(int i = 0; i < dialog3ContentPane.getComponentCount(); i++) {
+                    Rectangle bounds = dialog3ContentPane.getComponent(i).getBounds();
+                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                }
+                Insets insets = dialog3ContentPane.getInsets();
+                preferredSize.width += insets.right;
+                preferredSize.height += insets.bottom;
+                dialog3ContentPane.setMinimumSize(preferredSize);
+                dialog3ContentPane.setPreferredSize(preferredSize);
+            }
+            dialog3.pack();
+            dialog3.setLocationRelativeTo(dialog3.getOwner());
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         label2.setIcon(Imagesinks.png("images/administrator/admin.png",75,75));
         label4.setIcon(Imagesinks.png("images/logo/logo.png",100,100));
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
+    private JButton button4;
+    private JButton button5;
     private JButton button9;
     private JButton button8;
     private JButton button7;
@@ -727,11 +837,7 @@ public class UserManagement extends JFrame {
     private JPopupMenu.Separator separator1;
     private JLabel label5;
     private JTextField textField1;
-    private JButton button5;
-    private JButton button4;
-    private JButton button3;
-    private JButton button2;
-    private JButton button1;
+    private JButton button12;
     private JLabel label1;
     private JLabel label2;
     private JLabel label4;
@@ -789,6 +895,15 @@ public class UserManagement extends JFrame {
     private JLabel label30;
     private JLabel label32;
     private JLabel label33;
+    private JDialog dialog3;
+    private JLabel label34;
+    private JTextField textField9;
+    private JButton button13;
+    private JButton button16;
+    private JButton button17;
+    private JButton button18;
+    private JScrollPane scrollPane2;
+    private JTable table2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     private static Vector<Vector<Object>> data;
 }

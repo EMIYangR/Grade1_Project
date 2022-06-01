@@ -5,8 +5,6 @@
 package jw3.c1.view.Administrator;
 
 import jw3.c1.controller.AdministratorController;
-import jw3.c1.model.Administrator;
-import jw3.c1.view.Index;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -29,15 +27,12 @@ public class AdministratorLogin extends JFrame {
         String administratorId = textField1.getText();
         String administratorPwd = new String(passwordField1.getPassword());
         int a= AdministratorController.administratorLogin(administratorId,administratorPwd);
-        int adminA_id;
         switch (a){
             case 1:
                 JOptionPane.showMessageDialog(null,"账号或密码错误");
                 break;
             case 2:
                 JOptionPane.showMessageDialog(null,"登录成功");
-                Administrator admin = new Administrator();
-                adminA_id = admin.getA_id();
                 setVisible(false);
                 new AdministratorIndex();
                 break;

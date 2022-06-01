@@ -59,6 +59,11 @@ public class GoodsController {
         List<Goods> goodsList=qc.select(Goods.class,sql,a);
         return goodsList;
     }
+    public static List<Goods> sel1(){
+        String sql="select * from goods";
+        List<Goods> goodsList=qc.select(Goods.class,sql);
+        return goodsList;
+    }
     public static Goods spcx(int id){//根据点击的栏目获取商品信息
         String sql="select * from goods where g_id="+id;
         List<Goods> list= qc.select(Goods.class,sql);
