@@ -1,5 +1,7 @@
 package jw3.c1.model;
 
+import java.sql.Timestamp;
+
 public class Orderlist {
 
     public int getO_id() {
@@ -75,6 +77,16 @@ public class Orderlist {
     }
 
     private int o_id;
+
+    public String getO_number() {
+        return o_number;
+    }
+
+    public void setO_number(String o_number) {
+        this.o_number = o_number;
+    }
+
+    private String o_number;
     private String o_phone;
     private String o_address;
     private String o_statue;
@@ -83,4 +95,42 @@ public class Orderlist {
     private String o_method;
     private String o_paustatue;
     private int m_id;
+
+    public int getU_id() {
+        return u_id;
+    }
+
+    public void setU_id(int u_id) {
+        this.u_id = u_id;
+    }
+
+    private int u_id;
+
+    public Timestamp getO_begintime() {
+        return o_begintime;
+    }
+
+    public void setO_begintime(Timestamp o_begintime) {
+        this.o_begintime = o_begintime;
+    }
+
+    public Timestamp getO_estimate() {
+        return o_estimate;
+    }
+
+    public void setO_estimate(Timestamp o_estimate) {
+        this.o_estimate = o_estimate;
+    }
+
+    public Timestamp getO_endtime() {
+        return o_endtime;
+    }
+
+    public void setO_endtime(Timestamp o_endtime) {
+        this.o_endtime = o_endtime;
+    }
+
+    private Timestamp o_begintime;
+    private Timestamp o_estimate;
+    private Timestamp o_endtime;
 }

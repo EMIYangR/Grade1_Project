@@ -35,7 +35,7 @@ public class MertypeController {
         int mt1=mt.get(0).getMt_id();
         return mt1;
     }
-    public static List cx2(){
+    public static List<Mertype> cx2(){
         //查所有店铺类型
         String sql="select mt_name from mertype";
         List<Mertype> mt=qc.select(Mertype.class,sql);
@@ -62,5 +62,11 @@ public class MertypeController {
         List<Mertype> mt=qc.select(Mertype.class,sql,a);
         return mt.get(0).getMt_name();
     }
+    public static List<Mertype> tpl(int id){//根据店铺id查找类型
+        String sql="select * from mertype where mt_id="+id;
+        List<Mertype> list= qc.select(Mertype.class,sql);
+        return list;
+    }
+
 
 }

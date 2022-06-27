@@ -3,7 +3,7 @@ package jw3.c1.controller;
 import jw3.c1.model.Business;
 import jw3.c1.utils.DBConnection;
 import jw3.c1.utils.QueryByClass;
-import jw3.c1.view.主界面.Index;
+import jw3.c1.view.Main_interface.Index;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -101,6 +101,39 @@ public class BusinessController {
                 ui.add(rs.getString("b_pwd"));
                 //每次将一条数据加入到集合
                 data.add(ui);
+            }
+            DBConnection.close(rs,ps,conn);
+            return data;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static int cxbid(){
+        String sql="SELECT b_id from business ORDER BY b_id DESC LIMIT 1";
+        return qc.select(Business.class,sql).get(0).getB_id();
+    }
+    public static Vector<Vector<Object>> getAll1(String name){
+        String sql="SELECT b.b_id 商家编号, m.m_name 店铺编号, b.b_name 商家名称, COUNT(g.g_dprice) 收益 FROM business b JOIN mer m ON b.b_id =  m.b_id JOIN orderlist o ON m.m_id = o.m_id JOIN userinfo u ON u.u_id = o.u_id JOIN goods g ON m.b_id = b.b_id WHERE b.b_name LIKE ? GROUP BY m.m_id";
+        //1、构造Vector类型用于赋值给表格
+        Vector<Vector<Object>> data=new Vector<Vector<Object>>();
+        try {
+            Connection conn= DBConnection.getConnection();
+            PreparedStatement ps=conn.prepareStatement(sql);
+
+            ps.setString(1,"%"+name+"%");
+
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                //创造对象，每次放一条数据
+                Vector<Object> b = new Vector<Object>();
+                //将每个字段放入对象
+                b.add(rs.getInt("商家编号"));
+                b.add(rs.getString("店铺编号"));
+                b.add(rs.getString("商家名称"));
+                b.add(rs.getString("收益"));
+                //每次将一条数据加入到集合
+                data.add(b);
             }
             DBConnection.close(rs,ps,conn);
             return data;

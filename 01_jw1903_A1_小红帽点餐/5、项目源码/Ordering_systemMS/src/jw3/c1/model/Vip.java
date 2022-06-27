@@ -1,6 +1,9 @@
 package jw3.c1.model;
 
+import java.math.BigDecimal;
+
 public class Vip {
+
 
     public int getV_viprank() {
         return v_viprank;
@@ -10,23 +13,23 @@ public class Vip {
         this.v_viprank = v_viprank;
     }
 
-    public String getV_leveiup() {
-        return v_leveiup;
+    public int getV_levelup() {
+        return v_levelup;
     }
 
-    public void setV_leveiup(String v_leveiup) {
-        this.v_leveiup = v_leveiup;
+    public void setV_levelup(int v_levelup) {
+        this.v_levelup = v_levelup;
     }
 
-    public float getV_discount() {
+    public BigDecimal getV_discount() {
         return v_discount;
     }
 
-    public void setV_discount(float v_discount) {
+    public void setV_discount(BigDecimal v_discount) {
         this.v_discount = v_discount;
     }
 
     private int v_viprank;
-    private String v_leveiup;
-    private float v_discount;
+    private int v_levelup;
+    private BigDecimal v_discount;
 }

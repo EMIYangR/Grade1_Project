@@ -2,7 +2,7 @@ package jw3.c1.controller;
 import jw3.c1.model.Userinfo;
 import jw3.c1.utils.DBConnection;
 import jw3.c1.utils.QueryByClass;
-import jw3.c1.view.主界面.Index;
+import jw3.c1.view.Main_interface.Index;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -132,7 +132,7 @@ public class UserinfoController {
                     break;
                 }
             }
-            System.out.println(k);
+//            System.out.println(k);
             if (k>userinfoList.size()){
                 return 1;
             }else{
@@ -248,5 +248,34 @@ public class UserinfoController {
     public static boolean update(Userinfo ui){
         String sql="update userinfo set u_name=?,u_address=?,u_phone=?,u_account=?,u_pwd=?,v_viprank=?,u_email=?,u_nickname=? where u_id=?";
         return DBConnection.zsg(sql, ui.getU_name(), ui.getU_address(), ui.getU_phone(), ui.getU_account(), ui.getU_pwd(), ui.getV_viprank(), ui.getU_email(), ui.getU_nickname(), ui.getU_id());
+    }
+    public static Boolean zhec(String a,String b,String c,String d,String e,String f){
+        String sql="INSERT into userinfo VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        if (DBConnection.zsg(sql,0,null,null,a,null,b,c,1,d,e,f,100)){
+            return true;
+        }
+        return false;
+    }
+    public static Userinfo geta(int id){//根据用户id查询对应用户信息
+        String sql="select * from userinfo where u_id=?";
+        return qc.select(Userinfo.class,sql,id).get(0);
+    }
+    public static Boolean xyjf(int id){
+        String sql="UPDATE userinfo set p_score=p_score-5 where u_id=?";
+        return DBConnection.zsg(sql,id);
+    }
+    public static Boolean xyjf1(int id){
+        String sql="UPDATE userinfo set p_score=p_score+5 where u_id=?";
+        return DBConnection.zsg(sql,id);
+    }
+    public static Boolean vip(int vip){
+        int id=UserinfoController.user(Index.zh).getU_id();
+        String sql="UPDATE userinfo set v_viprank=? where u_id=?";
+        return DBConnection.zsg(sql,vip,id);
+    }
+    public  static String address(){
+        int id=UserinfoController.user(Index.zh).getU_id();
+        String sql="SELECT u_address from userinfo where u_id=?";
+        return qc.select(Userinfo.class,sql,id).get(0).getU_address();
     }
 }

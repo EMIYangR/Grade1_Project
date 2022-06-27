@@ -4,64 +4,60 @@
 
 package jw3.c1.view.Administrator;
 
-import java.awt.event.*;
 import jw3.c1.controller.AdministratorController;
 import jw3.c1.model.Administrator;
 import jw3.c1.utils.Imagesinks;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * @author Brainrain
  */
 public class AdministratorIndex extends JFrame {
-    public static void main(String[] args) {
-        new AdministratorIndex();
-    }
     public AdministratorIndex() {
         initComponents();
         this.setVisible(true);
         this.setSize(1080,720);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
-
-    private void comboBox2MouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void comboBox4MouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
     private void button1MouseClicked(MouseEvent e) {
         // TODO add your code here
         new AdministratorIndex();
-        this.setVisible(false);
+        this.dispose();
+
     }
 
     private void button2MouseClicked(MouseEvent e) {
         // TODO add your code here
         new MerchantManagement();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button3MouseClicked(MouseEvent e) {
         // TODO add your code here
         new UserManagement();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button4MouseClicked(MouseEvent e) {
         // TODO add your code here
         new CouponManagement();
-        this.setVisible(false);
+        this.dispose();
     }
     //退出登录
     private void button6MouseClicked(MouseEvent e) {
         // TODO add your code here
-        this.setVisible(false);
-        new AdministratorIndex();
+        new AdministratorLogin();
+        this.dispose();
+    }
+
+    private void button5MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        new Income();
+        this.dispose();
     }
 
     private void initComponents() {
@@ -123,7 +119,6 @@ public class AdministratorIndex extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 button1MouseClicked(e);
-                button1MouseClicked(e);
             }
         });
         contentPane.add(button1);
@@ -168,6 +163,12 @@ public class AdministratorIndex extends JFrame {
         //---- button5 ----
         button5.setText("\u6536\u76ca");
         button5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button5MouseClicked(e);
+            }
+        });
         contentPane.add(button5);
         button5.setBounds(20, 450, 150, 45);
 
@@ -200,10 +201,11 @@ public class AdministratorIndex extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-//        administrator=AdministratorController.user(admin_name);
-//        label1.setText(administrator.getA_name());
+        id = AdministratorLogin.id;
         label2.setIcon(Imagesinks.png("images/administrator/admin.png",75,75));
         label4.setIcon(Imagesinks.png("images/logo/logo.png",100,100));
+//        label1.setText(AdministratorController.user(id));
+//        label1.setText(AdministratorLogin.msg!=""?AdministratorLogin.msg:"Administrator");
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -221,5 +223,5 @@ public class AdministratorIndex extends JFrame {
     private JButton button6;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public static Administrator administrator;
-    public static String admin_name;
+    public static String id;
 }

@@ -19,11 +19,11 @@ public class AdministratorController {
             else return 2;
         }else return 3;
     }
-    public static Administrator user(String a){
+    public static String user(String a){
         QueryByClass<Administrator> qc=new QueryByClass<Administrator>();
-        String sql="select * from administrator where a_number=?";
+        String sql="select a_name from administrator where a_number=?";
         List<Administrator> u = qc.select(Administrator.class,sql,a);
-        Administrator administrator = u.get(0);
-        return administrator;
+        Administrator administrator = new Administrator();
+        return administrator.getA_name();
     }
 }

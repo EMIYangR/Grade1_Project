@@ -4,15 +4,16 @@
 
 package jw3.c1.view.Administrator;
 
-import jw3.c1.controller.*;
-import jw3.c1.model.*;
+import jw3.c1.controller.DiscountController;
+import jw3.c1.model.Discount;
 import jw3.c1.utils.Imagesinks;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 /**
  * @author Brainrain
@@ -64,14 +65,14 @@ public class CouponManagement extends JFrame {
     private void button10MouseClicked(MouseEvent e) {
         // TODO add your code here
         Discount discount = new Discount();
-        discount.setD_couuponnum(textField2.getText());
+        discount.setD_couponnum(textField2.getText());
         discount.setU_id(Integer.parseInt(textField3.getText()));
         discount.setD_name(textField4.getText());
         discount.setD_details(textField5.getText());
         discount.setD_overlying(textField6.getText());
         discount.setD_concessionalrate(Integer.parseInt(textField7.getText()));
         discount.setD_value(Integer.parseInt(textField8.getText()));
-        boolean add1 = (!discount.getD_couuponnum().equals("")
+        boolean add1 = (!discount.getD_couponnum().equals("")
                 && discount.getU_id() != 0
                 && !discount.getD_name().equals("")
                 && !discount.getD_details().equals("")
@@ -80,7 +81,7 @@ public class CouponManagement extends JFrame {
                 && discount.getD_value() != 0);
         if(add1){
             for (Vector<Object> v : data) {
-                if (v.get(1).equals(discount.getD_couuponnum())) {
+                if (v.get(1).equals(discount.getD_couponnum())) {
                     JOptionPane.showMessageDialog(null, "优惠券编号已存在！");
                     return;
                 }
@@ -115,7 +116,7 @@ public class CouponManagement extends JFrame {
 //                } else {
 //                    JOptionPane.showMessageDialog(null, "删除失败");
 //                }
-                if (d.delete(id)){
+                if (DiscountController.delete(id)){
                     JOptionPane.showMessageDialog(null, "删除成功!");
                     this.showData("");//刷新
                 }else{
@@ -152,14 +153,14 @@ public class CouponManagement extends JFrame {
         // TODO add your code here
         Discount discount = new Discount();
         discount.setD_couponid(Integer.parseInt(label20.getText()));
-        discount.setD_couuponnum(textField9.getText());
+        discount.setD_couponnum(textField9.getText());
         discount.setU_id(Integer.parseInt(textField10.getText()));
         discount.setD_name(textField11.getText());
         discount.setD_details(textField12.getText());
         discount.setD_overlying(textField13.getText());
         discount.setD_concessionalrate(Integer.parseInt(textField14.getText()));
         discount.setD_value(Integer.parseInt(textField15.getText()));
-        boolean add1 = (!discount.getD_couuponnum().equals("")
+        boolean add1 = (!discount.getD_couponnum().equals("")
                 && discount.getU_id() != 0
                 && !discount.getD_name().equals("")
                 && !discount.getD_details().equals("")
@@ -168,7 +169,7 @@ public class CouponManagement extends JFrame {
                 && discount.getD_value() != 0);
         if (add1) {
             for (Vector<Object> v : data) {
-                if (v.get(1).equals(discount.getD_couuponnum())) {
+                if (v.get(1).equals(discount.getD_couponnum())) {
                     JOptionPane.showMessageDialog(null, "优惠券编号已存在！");
                     return;
                 }
@@ -193,19 +194,31 @@ public class CouponManagement extends JFrame {
     private void button2MouseClicked(MouseEvent e) {
         // TODO add your code here
         new MerchantManagement();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button3MouseClicked(MouseEvent e) {
         // TODO add your code here
         new UserManagement();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button4MouseClicked(MouseEvent e) {
         // TODO add your code here
         new CouponManagement();
-        this.setVisible(false);
+        this.dispose();
+    }
+
+    private void button5MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        new Income();
+        this.dispose();
+    }
+
+    private void button14MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        new AdministratorLogin();
+        this.dispose();
     }
 
     private void initComponents() {
@@ -227,6 +240,7 @@ public class CouponManagement extends JFrame {
         button7 = new JButton();
         button8 = new JButton();
         button9 = new JButton();
+        button14 = new JButton();
         dialog1 = new JDialog();
         label3 = new JLabel();
         label6 = new JLabel();
@@ -300,7 +314,6 @@ public class CouponManagement extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 button1MouseClicked(e);
-                button1MouseClicked(e);
             }
         });
         contentPane.add(button1);
@@ -345,6 +358,12 @@ public class CouponManagement extends JFrame {
         //---- button5 ----
         button5.setText("\u6536\u76ca");
         button5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button5MouseClicked(e);
+            }
+        });
         contentPane.add(button5);
         button5.setBounds(20, 450, 150, 45);
         contentPane.add(separator1);
@@ -403,6 +422,18 @@ public class CouponManagement extends JFrame {
         });
         contentPane.add(button9);
         button9.setBounds(930, 450, 75, 30);
+
+        //---- button14 ----
+        button14.setText("\u9000\u51fa\u767b\u5f55");
+        button14.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button14.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button14MouseClicked(e);
+            }
+        });
+        contentPane.add(button14);
+        button14.setBounds(20, 525, 150, 45);
 
         {
             // compute preferred size
@@ -641,6 +672,7 @@ public class CouponManagement extends JFrame {
     private JButton button7;
     private JButton button8;
     private JButton button9;
+    private JButton button14;
     private JDialog dialog1;
     private JLabel label3;
     private JLabel label6;

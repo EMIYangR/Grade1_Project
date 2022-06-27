@@ -4,15 +4,16 @@
 
 package jw3.c1.view.Administrator;
 
-import java.awt.event.*;
-import jw3.c1.controller.*;
-import jw3.c1.model.*;
+import jw3.c1.controller.BusinessController;
+import jw3.c1.model.Business;
 import jw3.c1.utils.Imagesinks;
 
-import java.awt.*;
-import java.util.*;
 import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 /**
  * @author Brainrain
@@ -152,25 +153,37 @@ public class MerchantManagement extends JFrame {
     private void button1MouseClicked(MouseEvent e) {
         // TODO add your code here
         new AdministratorIndex();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button2MouseClicked(MouseEvent e) {
         // TODO add your code here
         new MerchantManagement();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button3MouseClicked(MouseEvent e) {
         // TODO add your code here
         new UserManagement();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button4MouseClicked(MouseEvent e) {
         // TODO add your code here
         new CouponManagement();
-        this.setVisible(false);
+        this.dispose();
+    }
+
+    private void button5MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        new Income();
+        this.dispose();
+    }
+
+    private void button14MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        new AdministratorLogin();
+        this.dispose();
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -191,6 +204,7 @@ public class MerchantManagement extends JFrame {
         textField1 = new JTextField();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
+        button14 = new JButton();
         dialog1 = new JDialog();
         label3 = new JLabel();
         label6 = new JLabel();
@@ -294,6 +308,12 @@ public class MerchantManagement extends JFrame {
         //---- button5 ----
         button5.setText("\u6536\u76ca");
         button5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button5MouseClicked(e);
+            }
+        });
         contentPane.add(button5);
         button5.setBounds(20, 450, 150, 45);
 
@@ -349,6 +369,18 @@ public class MerchantManagement extends JFrame {
         }
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(205, 195, 700, scrollPane1.getPreferredSize().height);
+
+        //---- button14 ----
+        button14.setText("\u9000\u51fa\u767b\u5f55");
+        button14.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button14.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button14MouseClicked(e);
+            }
+        });
+        contentPane.add(button14);
+        button14.setBounds(20, 525, 150, 45);
 
         {
             // compute preferred size
@@ -533,6 +565,7 @@ public class MerchantManagement extends JFrame {
     private JTextField textField1;
     private JScrollPane scrollPane1;
     private JTable table1;
+    private JButton button14;
     private JDialog dialog1;
     private JLabel label3;
     private JLabel label6;

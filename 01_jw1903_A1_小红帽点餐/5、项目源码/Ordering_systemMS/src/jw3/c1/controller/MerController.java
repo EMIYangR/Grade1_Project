@@ -29,11 +29,16 @@ public class MerController {
         list1.add(list.get(c));
         return list1;
     }
-    public static Mer dpcx(int id){//根据商品id查询店铺
-        String sql="select * from mer where m_id="+id;
-        List<Mer> m= qc.select(Mer.class,sql);
+    public static Mer dpcx(int id){//根据店铺id查询商品
+        String sql="select * from mer where m_id=?";
+        List<Mer> m= qc.select(Mer.class,sql,id);
        Mer m1=m.get(0);
         return m1;
+    }
+    public static List<Mer> dpcxo(int id){//根据店铺id查询商品
+        String sql="select * from mer where m_id=?";
+        List<Mer> m= qc.select(Mer.class,sql,id);
+        return m;
     }
     public static int spdp(int id){//根据商品id查找店铺id
         String sql="select a.m_id from mer a JOIN goods b on a.m_id=b.m_id where b.g_id="+id;
@@ -92,7 +97,8 @@ public class MerController {
         List<Evaluate1> e1=Evaluate1Controller.cx();
         List<Userinfo> u1=UserinfoController.cx();
         String sql="INSERT into mer VALUES(0,?,?,?,?,?,?,?,?,?)";
-        DBConnection.zsg(sql,a,b,c,d,e,f,g,r.nextInt(e1.size()),r.nextInt(u1.size()));
+        DBConnection.zsg(sql,a,b,c,d,e,f,g,r.nextInt(e1.size()),BusinessController.cxbid());
+        //a店铺名字,b店铺介绍，c店铺类型，d店铺地址，e店铺电话，f店铺图片，g是否可以点餐，评论id随机生成，商家id
     }
 //    public static double sel1(){
 //        String sql="SELECT a.m_name,(sum(b.g_price)/COUNT(b.g_name)) as pj from mer a join goods b on a.m_id=b.m_id GROUP BY a.m_name;";
@@ -144,12 +150,13 @@ public class MerController {
         return 0;
     }
     public static List<Mer> dpcx1(int id){//根据商品id查询店铺
-        String sql="select  *\n" +
+        String sql="select  * " +
                 "from Mer where mt_id="+id;
         List<Mer> m= qc.select(Mer.class,sql);
         return m;
     }
     public static int sel5(int aa){
+        //查询每家店的平均售价
         int i=0;
         try {
             String sql="SELECT a.m_name,(sum(b.g_price)/COUNT(b.g_name)) as pj from mer a join goods b on a.m_id=b.m_id where a.mt_id=? GROUP BY a.m_name";
@@ -183,11 +190,62 @@ public class MerController {
         List<Mer> merList=qc.select(Mer.class,sql);
         return merList;
     }
+    public static List<Mer> sel2(String name){//有参数查询所有店铺
+        String sql;
+        List<Mer> mer=new ArrayList<>();
+        if (name.equals("")){
+            sql="select * from mer";
+        }else {
+            sql="select * from mer where m_name like ?";
+        }
+        Connection conn= null;
+        try {
+            conn = DBConnection.getConnection();
+            PreparedStatement ps=conn.prepareStatement(sql);
+            if (!name.equals("")){ //参数化sql语句只在模糊查时进行
+                ps.setString(1,"%"+name+"%");
+            }
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                Mer m=new Mer();
+                m.setM_id(rs.getInt("m_id"));
+                m.setM_name(rs.getString("m_name"));
+                m.setM_des(rs.getString("m_des"));
+                m.setMt_id(rs.getInt("mt_id"));
+                m.setM_address(rs.getString("m_address"));
+                m.setM_phone(rs.getString("m_phone"));
+                m.setM_url(rs.getString("m_url"));
+                if (rs.getString("m_isorder").equals("1")){
+                    m.setM_isorder("是");
+                }else {
+                    m.setM_isorder("否");
+                }
+                m.setE_recordid(rs.getInt("e_recordid"));
+                m.setB_id(rs.getInt("b_id"));
+                mer.add(m);
+            }
+            DBConnection.close(rs,ps,conn);
+            return mer;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static Mer cx(int id){//店铺id查询店铺信息
-        String sql="select * from mer where m_id="+id;
-        List<Mer> list= qc.select(Mer.class,sql);
+        String sql="select * from mer where m_id=?";
+        List<Mer> list= qc.select(Mer.class,sql,id);
         Mer m=list.get(0);
         return m;
+    }
+    public static Mer dd(String num){//根据订单编号查询店铺
+        String sql="select b.m_id from orderlist a join mer b on a.m_id=b.m_id where a.o_number=?";
+        int a=qc.select(Mer.class,sql,num).get(0).getM_id();
+        String sql1="select * from mer where m_id=?";
+        List<Mer> mer= qc.select(Mer.class,sql1,a);
+        if (mer.size()>0){
+            return mer.get(0);
+        }
+        return null;
     }
 
 }

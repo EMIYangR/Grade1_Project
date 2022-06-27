@@ -4,30 +4,22 @@
 
 package jw3.c1.view.Administrator;
 
-import jw3.c1.controller.*;
+import jw3.c1.controller.Srcontroller;
+import jw3.c1.controller.UserinfoController;
 import jw3.c1.model.Userinfo;
-import jw3.c1.utils.DBConnection;
 import jw3.c1.utils.Imagesinks;
-import jw3.c1.utils.QueryByClass;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.Timer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 /**
  * @author Brainrain
  */
 public class UserManagement extends JFrame {
-    public static void main(String[] args) {
-        new UserManagement();
-    }
     public UserManagement() {
         initComponents();
         showData("");
@@ -56,6 +48,29 @@ public class UserManagement extends JFrame {
         DefaultTableModel dtm = new DefaultTableModel(data, heads);
         table1.setModel(dtm);
     }
+//    private void showData1(String user1) {
+//        //1、表头
+//        Vector<Object> heads1=new Vector<Object>();
+//        heads1.add("订单编号");
+//        heads1.add("订单编码");
+//        heads1.add("订单电话");
+//        heads1.add("收货地址");
+//        heads1.add("支付详情");
+//        heads1.add("是否使用优惠券");
+//        heads1.add("优惠券编码");
+//        heads1.add("支付方式");
+//        heads1.add("是否支付");
+//        heads1.add("店铺ID");
+//        heads1.add("用户ID");
+//        heads1.add("支付时间");
+//        heads1.add("开始配送时间");
+//        heads1.add("送达时间");
+//        Srcontroller src=Srcontroller.src;
+//        data1= Srcontroller.OrgetAll(user1,src.getId());
+//
+//        DefaultTableModel dtm=new DefaultTableModel(data1,heads1);
+//        table2.setModel(dtm);
+//    }
 
     private void button6MouseClicked(MouseEvent e) {
         // TODO add your code here
@@ -182,7 +197,7 @@ public class UserManagement extends JFrame {
             if(UserinfoController.update(userinfo)) {
                 JOptionPane.showMessageDialog(null,"修改成功!");
                 showData(textField1.getText());
-                dialog1.setVisible(false);
+                dialog1.dispose();
             } else {
                 JOptionPane.showMessageDialog(null,"修改失败!");
             }
@@ -199,40 +214,79 @@ public class UserManagement extends JFrame {
     private void button1MouseClicked(MouseEvent e) {
         // TODO add your code here
         new AdministratorIndex();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button2MouseClicked(MouseEvent e) {
         // TODO add your code here
         new MerchantManagement();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button3MouseClicked(MouseEvent e) {
         // TODO add your code here
         new UserManagement();
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void button4MouseClicked(MouseEvent e) {
         // TODO add your code here
         new CouponManagement();
-        this.setVisible(false);
+        this.dispose();
     }
     //黑名单
+    //用户收益
+//    private void button12MouseClicked(MouseEvent e) {
+//        // TODO add your code here
+//        this.setVisible(false);
+//        dialog3.setModal(true);
+//        dialog3.setSize(800,600);
+//        dialog3.setVisible(true);
+//    }
+//    //返回用户管理
+//    private void button18MouseClicked(MouseEvent e) {
+//        // TODO add your code here
+//        dialog3.dispose();
+//        new UserManagement();
+//    }
+
+    private void button5MouseClicked(MouseEvent e) {
+        // TODO add your code here
+        new Income();
+        this.dispose();
+    }
+
     private void button12MouseClicked(MouseEvent e) {
         // TODO add your code here
-        this.setVisible(false);
-        dialog3.setModal(true);
-        dialog3.setSize(800,600);
-        dialog3.setVisible(true);
+        new AdministratorLogin();
+        this.dispose();
     }
-    //返回用户管理
-    private void button18MouseClicked(MouseEvent e) {
+
+    private void button16MouseClicked(MouseEvent e) {
         // TODO add your code here
-        dialog3.dispose();
-        new UserManagement();
     }
+
+    private void button17MouseClicked(MouseEvent e) {
+        // TODO add your code here
+    }
+
+//    private void button13MouseClicked(MouseEvent e) {
+//        // TODO add your code here
+//        showData1("");
+//        dialog3.setSize(980,600);
+//        dialog3.setVisible(true);
+//    }
+//
+//    private void button16MouseClicked(MouseEvent e) {
+//        // TODO add your code here
+//        dialog3.dispose();
+//    }
+//
+//    private void button17MouseClicked(MouseEvent e) {
+//        // TODO add your code here
+//        showData1(textField9.getText());
+//
+//    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -248,12 +302,12 @@ public class UserManagement extends JFrame {
         separator1 = new JPopupMenu.Separator();
         label5 = new JLabel();
         textField1 = new JTextField();
-        button12 = new JButton();
         label1 = new JLabel();
         label2 = new JLabel();
         label4 = new JLabel();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
+        button12 = new JButton();
         dialog1 = new JDialog();
         label3 = new JLabel();
         label6 = new JLabel();
@@ -307,14 +361,12 @@ public class UserManagement extends JFrame {
         label32 = new JLabel();
         label33 = new JLabel();
         dialog3 = new JDialog();
-        label34 = new JLabel();
-        textField9 = new JTextField();
-        button13 = new JButton();
-        button16 = new JButton();
-        button17 = new JButton();
-        button18 = new JButton();
+        panel1 = new JPanel();
         scrollPane2 = new JScrollPane();
         table2 = new JTable();
+        button16 = new JButton();
+        textField9 = new JTextField();
+        button17 = new JButton();
 
         //======== this ========
         setTitle("\u540e\u53f0\u8fd0\u8425\u7cfb\u7edf");
@@ -372,6 +424,12 @@ public class UserManagement extends JFrame {
         //---- button5 ----
         button5.setText("\u6536\u76ca");
         button5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button5MouseClicked(e);
+            }
+        });
         contentPane.add(button5);
         button5.setBounds(20, 450, 150, 45);
 
@@ -431,17 +489,6 @@ public class UserManagement extends JFrame {
         contentPane.add(textField1);
         textField1.setBounds(205, 150, 700, 30);
 
-        //---- button12 ----
-        button12.setText("\u9ed1\u540d\u5355");
-        button12.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                button12MouseClicked(e);
-            }
-        });
-        contentPane.add(button12);
-        button12.setBounds(930, 550, 75, 30);
-
         //---- label1 ----
         label1.setText("Administrator");
         label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 15));
@@ -464,6 +511,18 @@ public class UserManagement extends JFrame {
         }
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(205, 210, 700, scrollPane1.getPreferredSize().height);
+
+        //---- button12 ----
+        button12.setText("\u9000\u51fa\u767b\u5f55");
+        button12.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        button12.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button12MouseClicked(e);
+            }
+        });
+        contentPane.add(button12);
+        button12.setBounds(20, 525, 150, 45);
 
         {
             // compute preferred size
@@ -755,52 +814,62 @@ public class UserManagement extends JFrame {
 
         //======== dialog3 ========
         {
-            dialog3.setTitle("\u9ed1\u540d\u5355\u7ba1\u7406");
+            dialog3.setTitle("\u7528\u6237\u8ba2\u5355");
             Container dialog3ContentPane = dialog3.getContentPane();
             dialog3ContentPane.setLayout(null);
 
-            //---- label34 ----
-            label34.setText("\u5c0f\u7ea2\u5e3d\u70b9\u9910\u7cfb\u7edf\u2122\u540e\u53f0\u8fd0\u8425\u7cfb\u7edf");
-            label34.setFont(new Font("\u65b9\u6b63\u5c0f\u6807\u5b8b_GBK", Font.BOLD, 28));
-            label34.setForeground(new Color(204, 0, 0));
-            label34.setEnabled(false);
-            dialog3ContentPane.add(label34);
-            label34.setBounds(170, 25, 414, 35);
-            dialog3ContentPane.add(textField9);
-            textField9.setBounds(25, 80, 600, 30);
+            //======== panel1 ========
+            {
+                panel1.setLayout(null);
 
-            //---- button13 ----
-            button13.setText("\u641c\u7d22");
-            dialog3ContentPane.add(button13);
-            button13.setBounds(650, 80, 75, 30);
+                //======== scrollPane2 ========
+                {
+                    scrollPane2.setViewportView(table2);
+                }
+                panel1.add(scrollPane2);
+                scrollPane2.setBounds(0, 0, 755, scrollPane2.getPreferredSize().height);
+
+                {
+                    // compute preferred size
+                    Dimension preferredSize = new Dimension();
+                    for(int i = 0; i < panel1.getComponentCount(); i++) {
+                        Rectangle bounds = panel1.getComponent(i).getBounds();
+                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                    }
+                    Insets insets = panel1.getInsets();
+                    preferredSize.width += insets.right;
+                    preferredSize.height += insets.bottom;
+                    panel1.setMinimumSize(preferredSize);
+                    panel1.setPreferredSize(preferredSize);
+                }
+            }
+            dialog3ContentPane.add(panel1);
+            panel1.setBounds(new Rectangle(new Point(80, 75), panel1.getPreferredSize()));
 
             //---- button16 ----
-            button16.setText("\u52a0\u5165\u9ed1\u540d\u5355");
-            dialog3ContentPane.add(button16);
-            button16.setBounds(650, 180, 75, 30);
-
-            //---- button17 ----
-            button17.setText("\u79fb\u9664\u9ed1\u540d\u5355");
-            dialog3ContentPane.add(button17);
-            button17.setBounds(650, 280, 75, 30);
-
-            //---- button18 ----
-            button18.setText("\u8fd4\u56de");
-            button18.addMouseListener(new MouseAdapter() {
+            button16.setText("\u8fd4\u56de");
+            button16.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    button18MouseClicked(e);
+                    button16MouseClicked(e);
                 }
             });
-            dialog3ContentPane.add(button18);
-            button18.setBounds(15, 15, 75, 30);
+            dialog3ContentPane.add(button16);
+            button16.setBounds(25, 20, 75, 30);
+            dialog3ContentPane.add(textField9);
+            textField9.setBounds(180, 20, 510, textField9.getPreferredSize().height);
 
-            //======== scrollPane2 ========
-            {
-                scrollPane2.setViewportView(table2);
-            }
-            dialog3ContentPane.add(scrollPane2);
-            scrollPane2.setBounds(25, 125, 600, 350);
+            //---- button17 ----
+            button17.setText("\u641c\u7d22");
+            button17.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    button17MouseClicked(e);
+                }
+            });
+            dialog3ContentPane.add(button17);
+            button17.setBounds(new Rectangle(new Point(755, 20), button17.getPreferredSize()));
 
             {
                 // compute preferred size
@@ -837,12 +906,12 @@ public class UserManagement extends JFrame {
     private JPopupMenu.Separator separator1;
     private JLabel label5;
     private JTextField textField1;
-    private JButton button12;
     private JLabel label1;
     private JLabel label2;
     private JLabel label4;
     private JScrollPane scrollPane1;
     private JTable table1;
+    private JButton button12;
     private JDialog dialog1;
     private JLabel label3;
     private JLabel label6;
@@ -896,14 +965,13 @@ public class UserManagement extends JFrame {
     private JLabel label32;
     private JLabel label33;
     private JDialog dialog3;
-    private JLabel label34;
-    private JTextField textField9;
-    private JButton button13;
-    private JButton button16;
-    private JButton button17;
-    private JButton button18;
+    private JPanel panel1;
     private JScrollPane scrollPane2;
     private JTable table2;
+    private JButton button16;
+    private JTextField textField9;
+    private JButton button17;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     private static Vector<Vector<Object>> data;
+    private static Vector<Vector<Object>> data1;
 }

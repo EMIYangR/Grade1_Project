@@ -1,13 +1,14 @@
 package jw3.c1.controller;
 
 import jw3.c1.model.Goods;
-import jw3.c1.model.Mer;
 import jw3.c1.utils.DBConnection;
 import jw3.c1.utils.QueryByClass;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -54,7 +55,7 @@ public class GoodsController {
         }
         return null;
     }
-    public static List<Goods> sel(int a){
+    public static List<Goods> sel(int a){//查图片和名字
         String sql="select g_url,g_name from goods where g_id=?";
         List<Goods> goodsList=qc.select(Goods.class,sql,a);
         return goodsList;
@@ -65,10 +66,91 @@ public class GoodsController {
         return goodsList;
     }
     public static Goods spcx(int id){//根据点击的栏目获取商品信息
-        String sql="select * from goods where g_id="+id;
-        List<Goods> list= qc.select(Goods.class,sql);
+        String sql="select * from goods where g_id=?";
+        List<Goods> list= qc.select(Goods.class,sql,id);
         Goods g=list.get(0);
         return g;
     }
+    public static List<Goods> sp(int a){
+        String sql="SELECT * from goods a where m_id=?";
+        List<Goods> list= qc.select(Goods.class,sql,a);
+        return list;
+    }
+    public static List<Goods> sp1(int b,String a){
+        String a1="'%"+a+"%'";
+        String sql;
+        if (!a.equals("")){
+            sql="SELECT * from goods where m_id=? and g_Name like "+a1;
+        }else {
+            sql="SELECT * from goods where m_id=?";
+        }
+         List<Goods> list= qc.select(Goods.class,sql,b);
+         return list;
+    }
+    public static List<Goods> zhj(int a){
+        String sql="SELECT * from goods where g_price!=g_dprice and m_id=?";
+        List<Goods> list= qc.select(Goods.class,sql,a);
+        return list;
+    }
+    public static int[] gwccx3(){
+        int i=0;
+        try {
+            String sql="SELECT COUNT(g_name) as sl,g_name from goods GROUP BY g_name";
+            Connection conn= DBConnection.getConnection();
+            Statement stat = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stat.executeQuery(sql);
+            int[] count=new int[50];
+            while (rs.next())
+            {
+                count[i++]=rs.getInt("sl");
+            }
+            DBConnection.close(rs,stat,conn);
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static List<Goods> dd(String num){//根据订单编号获取对应的所有商品
+        String sql="SELECT g_id from orderdetails where o_id=?";
+        int id=OrderlistController.cxid(num);
+        int a=qc.select(Goods.class,sql,id).size();
+        List<Goods> g=new ArrayList<>();
+        for (int i = 0; i <a ; i++) {
+            Goods g1=spcx(qc.select(Goods.class,sql,id).get(i).getG_id());
+            g.add(g1);
+        }
+        return g;
+    }
+    public static String[] jg(int id){
+        String[] jg=new String[2];
+        String sql="SELECT g_price,g_dprice from goods where g_id=?";
+        List<Goods> list=qc.select(Goods.class,sql,id);
+        jg[0]= String.valueOf(list.get(0).getG_price());
+        jg[0]= String.valueOf(list.get(0).getG_price());
+        return jg;
+    }
 
+    public static List<Goods> all(int id){
+        String sql="select * from goods where m_id=?";
+        return qc.select(Goods.class,sql,id);
+    }
+    public static int[] cxspid(int id){
+        int i=0;
+        String sql="SELECT a.g_id from goods a join mer b on a.m_id=b.m_id where a.m_id=?";
+        try {
+            Connection conn=DBConnection.getConnection();
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs=ps.executeQuery();
+            int[] id1=new int[40];
+            while (rs.next()){
+                id1[i++]=rs.getInt("g_id");
+            }
+            return id1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

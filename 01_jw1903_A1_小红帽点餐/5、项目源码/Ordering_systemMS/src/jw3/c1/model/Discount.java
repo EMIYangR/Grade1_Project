@@ -2,6 +2,12 @@ package jw3.c1.model;
 
 public class Discount {
 
+
+    private int d_couponid;
+    private String d_couponnum;
+    private int u_id;
+    private String d_name;
+
     public int getD_couponid() {
         return d_couponid;
     }
@@ -10,12 +16,12 @@ public class Discount {
         this.d_couponid = d_couponid;
     }
 
-    public String getD_couuponnum() {
-        return d_couuponnum;
+    public String getD_couponnum() {
+        return d_couponnum;
     }
 
-    public void setD_couuponnum(String d_couuponnum) {
-        this.d_couuponnum = d_couuponnum;
+    public void setD_couponnum(String d_couponnum) {
+        this.d_couponnum = d_couponnum;
     }
 
     public int getU_id() {
@@ -66,10 +72,6 @@ public class Discount {
         this.d_value = d_value;
     }
 
-    private int d_couponid;
-    private String d_couuponnum;
-    private int u_id;
-    private String d_name;
     private String d_details;
     private String d_overlying;
     private int d_concessionalrate;
