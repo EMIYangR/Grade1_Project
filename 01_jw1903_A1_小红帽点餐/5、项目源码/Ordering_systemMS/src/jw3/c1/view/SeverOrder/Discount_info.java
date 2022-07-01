@@ -132,7 +132,6 @@ public  class Discount_info extends JPanel {
         }else {
             xy=listt1.size()-2;
         }
-
         if (listt2.size()==1){
             yx=0;
         }else if (listt2.size()==2){
@@ -179,7 +178,6 @@ public  class Discount_info extends JPanel {
         }
 
 
-
 //        判断
         if (Di.getD_value()==0 || Di.getD_concessionalrate()==0 ) {
             JOptionPane.showMessageDialog(null,"不能为空");
@@ -197,9 +195,6 @@ public  class Discount_info extends JPanel {
             JOptionPane.showMessageDialog(null,"格式不对");
             return;
         }
-//        if (Di.getD_value()){
-//
-//        }
 
         String sql="insert discount values(?,?,?,?,?,?,?,?)";
                 boolean z=DBConnection.zsg(sql,0,Di.getD_couponnum(),Di.getU_id(),Di.getD_name(),Di.getD_details(),
@@ -294,10 +289,6 @@ public  class Discount_info extends JPanel {
         }else {
             yx=listt2.size()-2;
         }
-//        System.out.println(xy);
-//        System.out.println(yx);
-//        System.out.println(listt1.get(listt1.size()-1).substring(5));
-//        System.out.println(listt2.get(listt2.size()-1).substring(4));
         String tt1=listt1.get(xy).substring(5);
         String tt2=listt2.get(yx).substring(4);
         int max1=Integer.parseInt(listt1.get(listt1.size()-1).substring(5));

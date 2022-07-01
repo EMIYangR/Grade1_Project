@@ -4,6 +4,7 @@
 
 package jw3.c1.view.SeverOrder;
 
+import java.awt.event.*;
 import javax.swing.border.*;
 
 import jdk.nashorn.internal.scripts.JO;
@@ -222,6 +223,8 @@ public class Goods_info extends JPanel {
             }
             comboBox3.setSelectedItem(z1);
             comboBox4.setSelectedItem(z2);
+            dpid=comboBox8.getSelectedIndex();
+            nt=false;
             //后展示对话框
             dialog2.setModal(true);
             dialog2.setVisible(true);
@@ -230,6 +233,7 @@ public class Goods_info extends JPanel {
                     "您未选中任意一行!");
         }
     }
+
 //      修改弹窗按钮
     private void button7MouseClicked(MouseEvent e) {
         // TODO add your code here
@@ -237,6 +241,7 @@ public class Goods_info extends JPanel {
         Goods goods=new Goods();
         //1、获取数据
         int id=(int)data.get(index).get(0);
+        int mid=(int)data.get(index).get(7);
         boolean pd=false;
         try {
             pd = !(src.isNumberString(textField5.getText()));
@@ -277,12 +282,15 @@ public class Goods_info extends JPanel {
 //                    }
 //                }
 //            }
-//                if (selectc(selecmid(String.valueOf(comboBox8.getSelectedItem())),goods.getG_name())){
-//                    JOptionPane.showMessageDialog(null,"商品重复");
-//                    alldp(panel1);
-//                    return;
-//                }
-
+            if (nt){
+                if (selectc(selecmid(String.valueOf(comboBox8.getSelectedItem())),goods.getG_name())){
+                    JOptionPane.showMessageDialog(null,"商品重复");
+                    return;
+                }
+            }else if (selectc(mid,goods.getG_name())){
+                JOptionPane.showMessageDialog(null,"商品重复");
+                return;
+            }
                 String sql="UPDATE goods SET g_name=?,g_price=?,g_dprice=?,g_time=?,g_url=?,m_id=? WHERE g_id=?";
                 boolean z= DBConnection.zsg(sql,goods.getG_name(),goods.getG_price(),goods.getG_dprice()
                         ,goods.getG_time(),goods.getG_url(),goods.getM_id(),goods.getG_id());
@@ -310,6 +318,19 @@ public class Goods_info extends JPanel {
     }
 
     private void button8MouseClicked(MouseEvent e) {
+        // TODO add your code here
+    }
+
+    private void comboBox8(ActionEvent e) {
+        // TODO add your code here
+        if (comboBox8.getSelectedIndex()!=dpid){
+            nt=true;
+        }else {
+            nt=false;
+        }
+    }
+
+    private void comboBox8MouseClicked(MouseEvent e) {
         // TODO add your code here
     }
 
@@ -742,6 +763,9 @@ public class Goods_info extends JPanel {
             label9.setText("\u5e97\u94fa");
             dialog2ContentPane.add(label9);
             label9.setBounds(60, 215, 105, 40);
+
+            //---- comboBox8 ----
+            comboBox8.addActionListener(e -> comboBox8(e));
             dialog2ContentPane.add(comboBox8);
             comboBox8.setBounds(135, 220, 180, 30);
             dialog2ContentPane.add(comboBox9);
@@ -1000,4 +1024,6 @@ public class Goods_info extends JPanel {
     private static List<String> list2;
     private static List<Integer> listdpid=new ArrayList<>();
     String icon="images/goods/";
+    int dpid;
+    boolean nt=false,nt2=false;
 }

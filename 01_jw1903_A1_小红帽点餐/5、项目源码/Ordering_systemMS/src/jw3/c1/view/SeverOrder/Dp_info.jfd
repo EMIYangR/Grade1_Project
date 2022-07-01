@@ -236,36 +236,8 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "comboBox2"
 				"model": new javax.swing.DefaultComboBoxModel {
-					selectedItem: "请选择类型"
-					addElement( "请选择类型" )
-					addElement( "茶餐厅" )
-					addElement( "早点" )
-					addElement( "东北菜" )
-					addElement( "豆腐花" )
-					addElement( "干锅/香锅" )
-					addElement( "河北菜" )
-					addElement( "家常菜" )
-					addElement( "快餐简餐" )
-					addElement( "面条" )
-					addElement( "牛排" )
-					addElement( "农家菜" )
-					addElement( "其他美食" )
-					addElement( "其他中餐" )
-					addElement( "私房菜" )
-					addElement( "素食" )
-					addElement( "酸菜鱼/水煮鱼" )
-					addElement( "泰国菜" )
-					addElement( "特色菜" )
-					addElement( "天津菜" )
-					addElement( "小吃快餐" )
-					addElement( "新疆菜" )
-					addElement( "意大利菜" )
-					addElement( "粤菜" )
-					addElement( "综合自助" )
-					addElement( "川菜" )
-					addElement( "饮料" )
-					addElement( "家伟秘制家常菜" )
-					addElement( "奶茶" )
+					selectedItem: "请选择店铺"
+					addElement( "请选择店铺" )
 				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 100
@@ -440,37 +412,6 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "comboBox4"
-				"model": new javax.swing.DefaultComboBoxModel {
-					selectedItem: "茶餐厅"
-					addElement( "茶餐厅" )
-					addElement( "早点" )
-					addElement( "东北菜" )
-					addElement( "豆腐花" )
-					addElement( "干锅/香锅" )
-					addElement( "河北菜" )
-					addElement( "家常菜" )
-					addElement( "快餐简餐" )
-					addElement( "面条" )
-					addElement( "牛排" )
-					addElement( "农家菜" )
-					addElement( "其他美食" )
-					addElement( "其他中餐" )
-					addElement( "私房菜" )
-					addElement( "素食" )
-					addElement( "酸菜鱼/水煮鱼" )
-					addElement( "泰国菜" )
-					addElement( "特色菜" )
-					addElement( "天津菜" )
-					addElement( "小吃快餐" )
-					addElement( "新疆菜" )
-					addElement( "意大利菜" )
-					addElement( "粤菜" )
-					addElement( "综合自助" )
-					addElement( "川菜" )
-					addElement( "饮料" )
-					addElement( "家伟秘制家常菜" )
-					addElement( "奶茶" )
-				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 160
 				"height": 30

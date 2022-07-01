@@ -83,6 +83,10 @@ public class Dp_info extends JPanel {
 //  添加按钮
     private void button4MouseClicked(MouseEvent e) {
         // TODO add your code here
+        selectmtn();
+        for (int i = 0; i < listmtn.size(); i++) {
+            comboBox2.addItem(listmtn.get(i));
+        }
         checkBox2.setSelected(true);
         dialog1.setSize(440,600);
         dialog1.setModal(true); //模态框
@@ -167,6 +171,10 @@ public class Dp_info extends JPanel {
                     comboBox3.setSelectedIndex(i);
                     break;
                 }
+            }
+            selectmtn();
+            for (int i = 0; i < listmtn.size(); i++) {
+                comboBox4.addItem(listmtn.get(i));
             }
             comboBox4.setSelectedItem(data.get(index).get(7));
             if (String.valueOf(data.get(index).get(6)).equals("1")){
@@ -315,7 +323,7 @@ public class Dp_info extends JPanel {
         label19 = new JLabel();
         comboBox3 = new JComboBox();
         label21 = new JLabel();
-        comboBox4 = new JComboBox<>();
+        comboBox4 = new JComboBox();
         label22 = new JLabel();
         checkBox1 = new JCheckBox();
 
@@ -501,35 +509,7 @@ public class Dp_info extends JPanel {
 
             //---- comboBox2 ----
             comboBox2.setModel(new DefaultComboBoxModel<>(new String[] {
-                "\u8bf7\u9009\u62e9\u7c7b\u578b",
-                "\u8336\u9910\u5385",
-                "\u65e9\u70b9",
-                "\u4e1c\u5317\u83dc",
-                "\u8c46\u8150\u82b1",
-                "\u5e72\u9505/\u9999\u9505",
-                "\u6cb3\u5317\u83dc",
-                "\u5bb6\u5e38\u83dc",
-                "\u5feb\u9910\u7b80\u9910",
-                "\u9762\u6761",
-                "\u725b\u6392",
-                "\u519c\u5bb6\u83dc",
-                "\u5176\u4ed6\u7f8e\u98df",
-                "\u5176\u4ed6\u4e2d\u9910",
-                "\u79c1\u623f\u83dc",
-                "\u7d20\u98df",
-                "\u9178\u83dc\u9c7c/\u6c34\u716e\u9c7c",
-                "\u6cf0\u56fd\u83dc",
-                "\u7279\u8272\u83dc",
-                "\u5929\u6d25\u83dc",
-                "\u5c0f\u5403\u5feb\u9910",
-                "\u65b0\u7586\u83dc",
-                "\u610f\u5927\u5229\u83dc",
-                "\u7ca4\u83dc",
-                "\u7efc\u5408\u81ea\u52a9",
-                "\u5ddd\u83dc",
-                "\u996e\u6599",
-                "\u5bb6\u4f1f\u79d8\u5236\u5bb6\u5e38\u83dc",
-                "\u5976\u8336"
+                "\u8bf7\u9009\u62e9\u5e97\u94fa"
             }));
             dialog1ContentPane.add(comboBox2);
             comboBox2.setBounds(100, 385, 160, 30);
@@ -640,38 +620,6 @@ public class Dp_info extends JPanel {
             label21.setText("\u7c7b\u578b");
             dialog2ContentPane.add(label21);
             label21.setBounds(85, 360, 80, 30);
-
-            //---- comboBox4 ----
-            comboBox4.setModel(new DefaultComboBoxModel<>(new String[] {
-                "\u8336\u9910\u5385",
-                "\u65e9\u70b9",
-                "\u4e1c\u5317\u83dc",
-                "\u8c46\u8150\u82b1",
-                "\u5e72\u9505/\u9999\u9505",
-                "\u6cb3\u5317\u83dc",
-                "\u5bb6\u5e38\u83dc",
-                "\u5feb\u9910\u7b80\u9910",
-                "\u9762\u6761",
-                "\u725b\u6392",
-                "\u519c\u5bb6\u83dc",
-                "\u5176\u4ed6\u7f8e\u98df",
-                "\u5176\u4ed6\u4e2d\u9910",
-                "\u79c1\u623f\u83dc",
-                "\u7d20\u98df",
-                "\u9178\u83dc\u9c7c/\u6c34\u716e\u9c7c",
-                "\u6cf0\u56fd\u83dc",
-                "\u7279\u8272\u83dc",
-                "\u5929\u6d25\u83dc",
-                "\u5c0f\u5403\u5feb\u9910",
-                "\u65b0\u7586\u83dc",
-                "\u610f\u5927\u5229\u83dc",
-                "\u7ca4\u83dc",
-                "\u7efc\u5408\u81ea\u52a9",
-                "\u5ddd\u83dc",
-                "\u996e\u6599",
-                "\u5bb6\u4f1f\u79d8\u5236\u5bb6\u5e38\u83dc",
-                "\u5976\u8336"
-            }));
             dialog2ContentPane.add(comboBox4);
             comboBox4.setBounds(165, 365, 160, 30);
 
@@ -746,6 +694,21 @@ public class Dp_info extends JPanel {
         return 0;
     }
 
+        public void selectmtn(){
+            try {
+                listmtn.clear();
+                String sql="SELECT mt_name FROM mertype ";
+                Connection conn=DBConnection.getConnection();
+                PreparedStatement ps=conn.prepareStatement(sql);
+                ResultSet rs=ps.executeQuery();
+                while (rs.next()){
+                    listmtn.add(rs.getString("mt_name"));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     public boolean selectc(int id,String gname){
         try {
             List<String> list=new ArrayList();
@@ -815,7 +778,7 @@ public class Dp_info extends JPanel {
     private JLabel label19;
     private JComboBox comboBox3;
     private JLabel label21;
-    private JComboBox<String> comboBox4;
+    private JComboBox comboBox4;
     private JLabel label22;
     private JCheckBox checkBox1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
@@ -825,4 +788,5 @@ public class Dp_info extends JPanel {
             "家常7.png","家常8.png","家常9.png","家常10.png","布拉诺.jpg","抄手1.png","披萨.png","楼兰.jpg","沙拉.png","泰香米.jpg",
             "火锅.jpg","牛排.jpg","甜点.png","西餐.jpg","豆花1.png","金翠河.jpg"};
     String icong="images/mer/";
+    List<String> listmtn=new ArrayList<>();
 }

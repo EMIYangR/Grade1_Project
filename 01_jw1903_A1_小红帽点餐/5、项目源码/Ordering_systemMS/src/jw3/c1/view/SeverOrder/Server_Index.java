@@ -868,7 +868,7 @@ public class Server_Index extends JFrame {
         button6.setBounds(1375, 5, 90, 45);
 
         //---- label10 ----
-        label10.setIcon(new ImageIcon("D:\\Users\\EMI\\Desktop\\\u5c0f\u827e\u7c73\u7684\u82e6\u903c\u9879\u76ee\\\u5353\u8d8a\u9879\u76ee\u7ba1\u7406\\01_jw1903_A1_\u5c0f\u7ea2\u5e3d\u70b9\u9910\\5\u3001\u9879\u76ee\u6e90\u7801\\Ordering_systemMS\\images\\Sever_icon\\QQ\u56fe\u7247.jpg"));
+        label10.setIcon(new ImageIcon("C:\\Users\\86158\\Desktop\\xm\u6700\u7ec8\u7248\\01_jw1903_A1_\u5c0f\u7ea2\u5e3d\u70b9\u9910\\5\u3001\u9879\u76ee\u6e90\u7801\\Ordering_systemMS\\images\\Sever_icon\\QQ\u56fe\u7247.jpg"));
         contentPane.add(label10);
         label10.setBounds(0, -30, 1480, 880);
 
